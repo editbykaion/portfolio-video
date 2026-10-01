@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rookie Studio — Video Editing</title>
-<meta name="description" content="Rookie Studio — edição de vídeo para criadores e marcas internacionais.">
+<title>Kaion — Video Editing</title>
+<meta name="description" content="Kaion — edição de vídeo para criadores e marcas internacionais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -137,6 +137,10 @@
   .locked .center{flex:1; display:flex; align-items:center; justify-content:center;}
   .locked .center svg{width:34px; height:34px; opacity:0.7;}
   .locked .stage{font-size:13px; color:var(--muted);}
+  .video-card{border-radius:var(--radius); border:1px solid var(--line); background:var(--panel); overflow:hidden;}
+  .video-card .embed{position:relative; aspect-ratio:16/9;}
+  .video-card .embed iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .video-card .video-title{padding:14px 16px; font-size:14px; font-weight:600;}
   .work-note{margin-top:28px; color:var(--muted); font-size:14.5px; max-width:56ch;}
 
   /* ---- about ---- */
@@ -168,11 +172,11 @@
   .cta-band p{color:var(--muted); margin-top:14px; max-width:48ch; font-size:15px;}
   footer{border-top:1px solid var(--line); padding:36px 0 0; color:var(--muted); font-size:13.5px; overflow:hidden;}
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-bottom:36px;}
-  .footer-giant-wrap{overflow:hidden; height:clamp(110px,18vw,260px); position:relative;}
+  .footer-giant-wrap{overflow:hidden; height:clamp(70px,18vw,260px); position:relative; width:100%;}
   .footer-giant{
     position:relative;
     font-family:'Chakra Petch', sans-serif; font-weight:700;
-    font-size:clamp(120px,24vw,340px); line-height:1;
+    font-size:clamp(64px,26vw,340px); line-height:1;
     color:rgba(237,239,245,0.92);
     letter-spacing:-0.02em; text-align:center; white-space:nowrap;
   }
@@ -189,16 +193,25 @@
   }
 
   /* ---- scroll effects ---- */
-  .locked{
+  .reveal-card{
     opacity:0; transform:translateY(26px) rotate(-2deg);
     transition:opacity .6s ease, transform .6s ease;
   }
-  .locked:nth-child(2){transition-delay:.08s;}
-  .locked:nth-child(3){transition-delay:.16s;}
-  .locked.in-view{opacity:1; transform:translateY(0) rotate(0deg);}
+  .reveal-card:nth-child(2){transition-delay:.08s;}
+  .reveal-card:nth-child(3){transition-delay:.16s;}
+  .reveal-card.in-view{opacity:1; transform:translateY(0) rotate(0deg);}
   @media (prefers-reduced-motion: reduce){
-    .locked{opacity:1; transform:none; transition:none;}
+    .reveal-card{opacity:1; transform:none; transition:none;}
   }
+
+  /* ---- contact ---- */
+  .contact-grid{display:flex; gap:56px; flex-wrap:wrap; margin-top:32px;}
+  .contact-col .label{display:block; font-size:12.5px; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:.04em;}
+  .contact-col a.email-link{font-size:18px; font-weight:600; color:var(--text);}
+  .social-row{display:flex; gap:10px;}
+  .social-row a{width:38px; height:38px; border-radius:50%; background:var(--panel-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;}
+  .social-row a svg{width:16px; height:16px;}
+  .social-row .yt-soon{width:38px; height:38px; border-radius:50%; border:1px dashed var(--line); display:flex; align-items:center; justify-content:center; font-size:8.5px; color:var(--muted); text-align:center; line-height:1.1;}
 </style>
 </head>
 <body>
@@ -207,7 +220,7 @@
   <nav class="wrap">
     <div class="logo">
       <svg class="logo-mark" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 8v8l10 6 10-6V8L12 2z" stroke="#3DDCFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 2v20M2 8l10 6 10-6" stroke="#3DDCFF" stroke-width="1.2" opacity="0.5"/></svg>
-      Rookie Studio
+      Kaion
     </div>
     <div class="navlinks">
       <a href="#toolbox">Ferramentas</a>
@@ -225,7 +238,7 @@
     <div class="hero-copy">
       <div class="eyebrow status-pill"><span class="status-dot"></span>Novo na jornada, sério no ofício</div>
       <h1>Editando vídeo,<br>uma <span>fase</span> de cada vez.</h1>
-      <p class="lede">Sou editor de vídeo em formação, construindo a Rookie Studio do zero para atender criadores e marcas internacionais. Aprendendo Premiere Pro e After Effects na prática, um corte por vez.</p>
+      <p class="lede">Sou editor de vídeo em formação, construindo a Kaion do zero para atender criadores e marcas internacionais. Aprendendo Premiere Pro e After Effects na prática, um corte por vez.</p>
       <div class="cta-row">
         <a href="#trabalhos" class="btn btn-primary">Ver o progresso</a>
         <a href="#sobre" class="btn btn-ghost">Conhecer a história</a>
@@ -276,7 +289,7 @@
 <section id="servicos">
   <div class="wrap">
     <div class="toolbox-head">
-      <h2>O que a Rookie<br>vai entregar.</h2>
+      <h2>O que a Kaion<br>vai entregar.</h2>
       <p>O foco vai nascer aqui, mas essas são as frentes que estou treinando pra oferecer.</p>
     </div>
     <div class="services-grid">
@@ -307,33 +320,11 @@
 <section id="trabalhos">
   <div class="wrap">
     <div class="toolbox-head">
-      <h2>Trabalhos —<br>fases ainda bloqueadas.</h2>
-      <p>Nenhum projeto de cliente ainda. Esse fim de semana o primeiro corte entra em produção.</p>
+      <h2 id="workHeading">Trabalhos —<br>fases ainda bloqueadas.</h2>
+      <p id="workSub">Nenhum projeto de cliente ainda. Esse fim de semana o primeiro corte entra em produção.</p>
     </div>
-    <div class="work-grid">
-      <div class="locked">
-        <span class="tag">Projeto 01</span>
-        <div class="center">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="1.5" stroke="#8A8FA3" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#8A8FA3" stroke-width="1.6"/></svg>
-        </div>
-        <span class="stage">Em produção</span>
-      </div>
-      <div class="locked">
-        <span class="tag">Projeto 02</span>
-        <div class="center">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="1.5" stroke="#8A8FA3" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#8A8FA3" stroke-width="1.6"/></svg>
-        </div>
-        <span class="stage">Bloqueado</span>
-      </div>
-      <div class="locked">
-        <span class="tag">Projeto 03</span>
-        <div class="center">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="1.5" stroke="#8A8FA3" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#8A8FA3" stroke-width="1.6"/></svg>
-        </div>
-        <span class="stage">Bloqueado</span>
-      </div>
-    </div>
-    <p class="work-note">Cada projeto entra aqui assim que fica pronto — o primeiro é um vídeo do YouTube ou uma live, editado só pra treino e portfólio.</p>
+    <div class="work-grid" id="workGrid"></div>
+    <p class="work-note" id="workNote">Cada projeto entra aqui assim que fica pronto — o primeiro é um vídeo do YouTube ou uma live, editado só pra treino e portfólio.</p>
   </div>
 </section>
 
@@ -341,7 +332,7 @@
   <div class="wrap about-grid">
     <h2>Começando do<br>zero, de propósito.</h2>
     <div class="about-body">
-      <p><strong>Peguei gosto por jogos antes de pegar gosto por edição</strong> — e é de lá que vem o nome. Rookie porque é exatamente onde estou: no início, aprendendo as regras, tentando de novo até acertar o corte.</p>
+      <p><strong>Peguei gosto por jogos antes de pegar gosto por edição</strong> — e é de lá que vem parte da minha identidade. Kaion carrega o som de "lua sombria": algo que se move sem chamar atenção, mas que corta com precisão quando precisa.</p>
       <p>Sempre fui do time dragão e ninja — precisão silenciosa e um pouco de fogo quando precisa. Jinx sempre foi minha campeã favorita: caótica, mas com timing perfeito. É meio assim que penso edição: parece bagunça até o corte certo entrar no beat certo.</p>
       <p>Gosto de pixel art pelo mesmo motivo que gosto de motion graphics: cada quadrado, cada frame, importa. E de webcomics pela narrativa em blocos — corte, corte, corte, revelação.</p>
       <p>A parte técnica ainda está em construção. A parte de levar isso a sério como profissão — atender bem, entregar no prazo, cobrar certo — essa eu já comecei a estudar antes mesmo de terminar o primeiro projeto.</p>
@@ -363,7 +354,7 @@
     <div class="faq-list">
       <div class="faq-item open">
         <button class="faq-q">Você já tem experiência com clientes? <span class="plus">+</span></button>
-        <div class="faq-a" style="max-height:200px"><p>Ainda não formalmente — a Rookie Studio está nascendo agora. O que já existe é disciplina: estudo constante da parte técnica e da parte de negócio pra atender bem desde o primeiro projeto.</p></div>
+        <div class="faq-a" style="max-height:200px"><p>Ainda não formalmente — a Kaion está nascendo agora. O que já existe é disciplina: estudo constante da parte técnica e da parte de negócio pra atender bem desde o primeiro projeto.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Quais ferramentas você usa? <span class="plus">+</span></button>
@@ -371,7 +362,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">Você atende clientes de outros países? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Sim, esse é o foco principal da Rookie Studio. Comunicação em inglês, prazos claros e entrega organizada fazem parte do plano desde o início.</p></div>
+        <div class="faq-a"><p>Sim, esse é o foco principal da Kaion. Comunicação em inglês, prazos claros e entrega organizada fazem parte do plano desde o início.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Como vai funcionar preço e prazo? <span class="plus">+</span></button>
@@ -384,20 +375,42 @@
 <section id="contato">
   <div class="wrap">
     <div class="cta-band">
-      <h2>Contato chegando<br>em breve.</h2>
-      <p>Os canais oficiais (email, Discord e X) da Rookie Studio ainda estão sendo criados com foco na marca. Assim que estiverem prontos, entram aqui.</p>
+      <h2>Vamos conversar.</h2>
+      <p>Resposta rápida por email ou Discord — no fuso de quem também está online nos EUA.</p>
+      <div class="contact-grid">
+        <div class="contact-col">
+          <span class="label">Email</span>
+          <a class="email-link" href="mailto:editbykaion@gmail.com">editbykaion@gmail.com</a>
+        </div>
+        <div class="contact-col">
+          <span class="label">Discord</span>
+          <span class="email-link">editbykaion</span>
+        </div>
+        <div class="contact-col">
+          <span class="label">Social</span>
+          <div class="social-row">
+            <a href="https://instagram.com/editbykaion" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#EDEFF5" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="#EDEFF5" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="#EDEFF5"/></svg>
+            </a>
+            <a href="https://x.com/editbykaion" aria-label="X" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M20 4L4 20" stroke="#EDEFF5" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </a>
+            <span class="yt-soon">YT<br>em breve</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>Rookie Studio — video editing</span>
+    <span>Kaion — video editing</span>
     <span>© 2026</span>
   </div>
   <div class="footer-giant-wrap">
-    <div class="footer-giant">ROOKIE</div>
-    <div class="footer-giant footer-giant-blur" aria-hidden="true">ROOKIE</div>
+    <div class="footer-giant">KAION</div>
+    <div class="footer-giant footer-giant-blur" aria-hidden="true">KAION</div>
   </div>
 </footer>
 
@@ -418,6 +431,43 @@
     });
   });
 
+  // ====================================================================
+  // SEUS PROJETOS: quando tiver um vídeo pronto, adiciona um item aqui.
+  // youtubeId é só o código depois de "v=" na URL do YouTube
+  // (ex: em youtube.com/watch?v=dQw4w9WgXcQ, o id é "dQw4w9WgXcQ")
+  // Exemplo: { title: 'Edit — canal X', youtubeId: 'dQw4w9WgXcQ' }
+  // ====================================================================
+  const projects = [
+    // { title: 'Meu primeiro corte', youtubeId: 'COLOQUE_O_ID_AQUI' },
+  ];
+
+  const workGrid = document.getElementById('workGrid');
+  const workHeading = document.getElementById('workHeading');
+  const workSub = document.getElementById('workSub');
+  const workNote = document.getElementById('workNote');
+
+  if(projects.length === 0){
+    workGrid.innerHTML = [1,2,3].map((n, i) => `
+      <div class="locked reveal-card">
+        <span class="tag">Projeto 0${n}</span>
+        <div class="center">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="1.5" stroke="#8A8FA3" stroke-width="1.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#8A8FA3" stroke-width="1.6"/></svg>
+        </div>
+        <span class="stage">${i === 0 ? 'Em produção' : 'Bloqueado'}</span>
+      </div>`).join('');
+  } else {
+    workHeading.innerHTML = 'Trabalhos —<br>primeiros cortes.';
+    workSub.textContent = 'Vídeos de treino e portfólio, editados enquanto aprendo Premiere e After Effects na prática.';
+    workNote.textContent = 'Mais projetos entram aqui conforme forem ficando prontos.';
+    workGrid.innerHTML = projects.map(p => `
+      <div class="video-card reveal-card">
+        <div class="embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/${p.youtubeId}" title="${p.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-title">${p.title}</div>
+      </div>`).join('');
+  }
+
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if(!prefersReducedMotion){
@@ -430,9 +480,9 @@
         }
       });
     }, {threshold:0.25});
-    document.querySelectorAll('.locked').forEach(el => io.observe(el));
+    document.querySelectorAll('.reveal-card').forEach(el => io.observe(el));
   } else {
-    document.querySelectorAll('.locked').forEach(el => el.classList.add('in-view'));
+    document.querySelectorAll('.reveal-card').forEach(el => el.classList.add('in-view'));
   }
 </script>
 
