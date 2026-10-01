@@ -172,11 +172,11 @@
   .cta-band p{color:var(--muted); margin-top:14px; max-width:48ch; font-size:15px;}
   footer{border-top:1px solid var(--line); padding:36px 0 0; color:var(--muted); font-size:13.5px; overflow:hidden;}
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-bottom:36px;}
-  .footer-giant-wrap{overflow:hidden; height:clamp(70px,18vw,260px); position:relative; width:100%;}
+  .footer-giant-wrap{--giant:clamp(64px,26vw,340px); overflow:hidden; height:calc(var(--giant) * var(--cut, .8)); position:relative; width:100%;}
   .footer-giant{
     position:relative;
     font-family:'Chakra Petch', sans-serif; font-weight:700;
-    font-size:clamp(64px,26vw,340px); line-height:1;
+    font-size:var(--giant); line-height:1;
     color:rgba(237,239,245,0.92);
     letter-spacing:-0.02em; text-align:center; white-space:nowrap;
   }
@@ -188,7 +188,7 @@
   }
   .footer-giant-wrap::after{
     content:''; position:absolute; inset:0;
-    background:linear-gradient(to bottom, transparent 78%, var(--ink) 100%);
+    background:linear-gradient(to bottom, transparent 70%, rgba(11,13,20,.55) 100%);
     pointer-events:none;
   }
 
@@ -479,6 +479,57 @@
     document.querySelectorAll('.reveal-card').forEach(el => io.observe(el));
   } else {
     document.querySelectorAll('.reveal-card').forEach(el => el.classList.add('in-view'));
+  }
+  // ====================================================================
+  // KAION gigante no rodapé: o corte termina exatamente na base da barra
+  // do "A", e essa mesma linha serve de régua pras outras letras.
+  // Mede o "A" na fonte real, então funciona em qualquer tamanho de tela.
+  // ====================================================================
+  function alignWordmark(){
+    try{
+      const wrap = document.querySelector('.footer-giant-wrap');
+      const word = wrap && wrap.querySelector('.footer-giant');
+      if(!wrap || !word) return;
+      const fs = parseFloat(getComputedStyle(word).fontSize);
+
+      // 1) desenha o "A" num canvas, com a mesma fonte, e lê a coluna central
+      const S = 400;
+      const c = document.createElement('canvas');
+      c.width = Math.round(S * 1.6); c.height = Math.round(S * 1.4);
+      const ctx = c.getContext('2d', {willReadFrequently:true});
+      ctx.font = "700 " + S + "px 'Chakra Petch', sans-serif";
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      const baseY = Math.round(S * 1.1);
+      ctx.fillText('A', c.width / 2, baseY);
+      const col = ctx.getImageData(Math.round(c.width / 2), 0, 1, c.height).data;
+
+      // de cima pra baixo: topo do A (sólido), buraco do A (vazio), barra (sólido)
+      const runs = []; let inRun = false, start = 0;
+      for(let y = 0; y < c.height; y++){
+        const solid = col[y * 4 + 3] > 128;
+        if(solid && !inRun){ inRun = true; start = y; }
+        if(!solid && inRun){ inRun = false; runs.push([start, y - 1]); }
+      }
+      if(inRun) runs.push([start, c.height - 1]);
+      if(runs.length < 2) return;
+      const barBottom = runs[1][1] + 1;                 // base da barra
+      const barAboveBaseline = (baseY - barBottom) / S;  // em "em"
+
+      // 2) acha a linha de base do texto no HTML (elemento de altura zero fica nela)
+      const probe = document.createElement('span');
+      probe.style.cssText = 'display:inline-block;width:0;height:0;';
+      word.appendChild(probe);
+      const baseline = (probe.getBoundingClientRect().top - word.getBoundingClientRect().top) / fs;
+      word.removeChild(probe);
+
+      const cut = baseline - barAboveBaseline;
+      if(cut > 0.2 && cut < 1.2) wrap.style.setProperty('--cut', cut.toFixed(4));
+    }catch(e){ /* mantém a altura padrão */ }
+  }
+  if(document.fonts && document.fonts.load){
+    document.fonts.load("700 100px 'Chakra Petch'", "A").then(alignWordmark, alignWordmark);
+  } else {
+    window.addEventListener('load', alignWordmark);
   }
 </script>
 
