@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kaion — Video Editing</title>
 <meta name="description" content="Kaion — video editing for creators and brands. Premiere Pro &amp; After Effects.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kaion — Video Editing">
+<meta property="og:description" content="Video editing for creators and brands.">
+<meta property="og:url" content="https://editbykaion.vercel.app">
+<meta property="og:image" content="https://editbykaion.vercel.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,8 +23,8 @@
     --line: rgba(237,239,245,0.09);
     --text:#EDEFF5;
     --muted:#8A8FA3;
-    --magenta:#FF3D7F;
-    --cyan:#3DDCFF;
+    --red:#E23A52;
+    --cream:#EFE6D6;
     --radius: 10px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -57,7 +64,7 @@
     display:flex; align-items:center; gap:10px;
     font-family:'Chakra Petch', sans-serif; font-weight:700; font-size:18px;
   }
-  .logo-mark{width:22px; height:22px; flex:none;}
+  .logo-wm{height:17px; width:auto; display:block; color:var(--cream);}
   .navlinks{display:flex; gap:32px; font-size:14px; color:var(--muted);}
   .navlinks a:hover{color:var(--text);}
   .status-pill{
@@ -65,7 +72,7 @@
     border:1px solid var(--line); border-radius:999px;
     padding:6px 14px; font-size:13px; color:var(--muted);
   }
-  .status-dot{width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px var(--cyan);}
+  .status-dot{width:7px; height:7px; border-radius:50%; background:var(--red); box-shadow:0 0 8px var(--red);}
   @media(max-width:720px){ .navlinks{display:none;} }
 
   /* ---- hero ---- */
@@ -79,7 +86,7 @@
     font-size:clamp(44px, 7vw, 78px);
     color:var(--text);
   }
-  .hero h1 span{color:var(--cyan);}
+  .hero h1 span{color:var(--red);}
   .hero p.lede{
     margin-top:22px; max-width:46ch; color:var(--muted); font-size:17px;
   }
@@ -89,19 +96,19 @@
     padding:13px 22px; border-radius:8px; font-size:14px; font-weight:600;
     border:1px solid var(--line);
   }
-  .btn-primary{background:var(--magenta); color:#0B0D14; border-color:var(--magenta);}
+  .btn-primary{background:var(--cream); color:#0B0D14; border-color:var(--cream);}
   .btn-ghost{color:var(--text);}
   .hero-art{
     aspect-ratio:1/1; border-radius:16px;
     background:
-      radial-gradient(circle at 30% 20%, rgba(255,61,127,0.35), transparent 55%),
-      radial-gradient(circle at 75% 75%, rgba(61,220,255,0.28), transparent 55%),
+      radial-gradient(circle at 30% 20%, rgba(226,58,82,0.30), transparent 55%),
+      radial-gradient(circle at 75% 75%, rgba(239,230,214,0.10), transparent 55%),
       var(--panel);
     border:1px solid var(--line);
     display:flex; align-items:center; justify-content:center;
     position:relative;
   }
-  .hero-art svg{width:58%; height:58%;}
+  .hero-art svg{width:68%; height:68%;}
 
   /* ---- toolbox ---- */
   .toolbox-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:36px;}
@@ -113,7 +120,7 @@
     background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     padding:20px; display:flex; flex-direction:column; gap:10px; min-height:110px; justify-content:space-between;
   }
-  .tool-card .lvl{font-size:12px; color:var(--cyan);}
+  .tool-card .lvl{font-size:12px; color:var(--red);}
   .tool-card .name{font-weight:600; font-size:15px;}
 
   /* ---- services ---- */
@@ -160,7 +167,7 @@
     padding:22px 4px; background:none; border:none; color:var(--text);
     font-family:inherit; font-size:16px; font-weight:600; text-align:left; cursor:pointer;
   }
-  .faq-q .plus{color:var(--cyan); font-size:20px; transition:transform .2s;}
+  .faq-q .plus{color:var(--red); font-size:20px; transition:transform .2s;}
   .faq-item.open .plus{transform:rotate(45deg);}
   .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
   .faq-a p{color:var(--muted); padding:0 4px 22px; font-size:14.5px; max-width:62ch;}
@@ -172,20 +179,9 @@
   .cta-band p{color:var(--muted); margin-top:14px; max-width:48ch; font-size:15px;}
   footer{border-top:1px solid var(--line); padding:36px 0 0; color:var(--muted); font-size:13.5px; overflow:hidden;}
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-bottom:36px;}
-  .footer-giant-wrap{--giant:clamp(64px,26vw,340px); overflow:hidden; height:calc(var(--giant) * var(--cut, .8)); position:relative; width:100%;}
-  .footer-giant{
-    position:relative;
-    font-family:'Chakra Petch', sans-serif; font-weight:700;
-    font-size:var(--giant); line-height:1;
-    color:rgba(237,239,245,0.92);
-    letter-spacing:-0.02em; text-align:center; white-space:nowrap;
-  }
-  .footer-giant-blur{
-    position:absolute; inset:0;
-    filter:blur(7px);
-    -webkit-mask-image:linear-gradient(to bottom, transparent 0%, transparent 62%, black 100%);
-    mask-image:linear-gradient(to bottom, transparent 0%, transparent 62%, black 100%);
-  }
+  .footer-giant-wrap{position:relative; width:min(100%,1100px); margin:0 auto; aspect-ratio:1234/215; overflow:hidden; color:rgba(239,230,214,.94);}
+  .fg{position:absolute; left:0; top:0; width:100%; height:auto; display:block;}
+  .fg-blur{filter:blur(7px); -webkit-mask-image:linear-gradient(to bottom, transparent 0%, transparent 40%, black 65%, black 100%); mask-image:linear-gradient(to bottom, transparent 0%, transparent 40%, black 65%, black 100%);}
   .footer-giant-wrap::after{
     content:''; position:absolute; inset:0;
     background:linear-gradient(to bottom, transparent 70%, rgba(11,13,20,.55) 100%);
@@ -214,14 +210,14 @@
   .social-row .yt-soon{width:38px; height:38px; border-radius:50%; border:1px dashed var(--line); display:flex; align-items:center; justify-content:center; font-size:8.5px; color:var(--muted); text-align:center; line-height:1.1;}
 </style>
 </head>
-<body>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="kaion-wm"><polygon points="0.0,0.0 56.0,0.0 56.0,300.0 0.0,300.0" fill="currentColor"/><polygon points="166.0,0.0 230.0,0.0 112.0,174.0 48.0,174.0" fill="currentColor"/><polygon points="48.0,126.0 112.0,126.0 230.0,300.0 166.0,300.0" fill="currentColor"/><polygon points="54.0,120.0 116.0,120.0 116.0,180.0 54.0,180.0" fill="currentColor"/><polygon points="345.0,0.0 409.0,0.0 316.0,300.0 252.0,300.0" fill="currentColor"/><polygon points="345.0,0.0 409.0,0.0 502.0,300.0 438.0,300.0" fill="currentColor"/><polygon points="538.0,0.0 594.0,0.0 594.0,300.0 538.0,300.0" fill="currentColor"/><path d="M910.1 84.7 A150.0 150.0 0 0 1 655.7 243.6 Z" fill="currentColor"/><path d="M669.9 215.3 A150.0 150.0 0 0 1 924.3 56.4 Z" fill="currentColor"/><line x1="657.7" y1="232.7" x2="922.3" y2="67.3" stroke="#D7263D" stroke-width="10.5"/><polygon points="976.0,0.0 1032.0,0.0 1032.0,300.0 976.0,300.0" fill="currentColor"/><polygon points="1150.0,0.0 1206.0,0.0 1206.0,300.0 1150.0,300.0" fill="currentColor"/><polygon points="976.0,0.0 1040.0,0.0 1206.0,300.0 1142.0,300.0" fill="currentColor"/></g></defs></svg>
 
 <header>
   <nav class="wrap">
-    <div class="logo">
-      <svg class="logo-mark" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 8v8l10 6 10-6V8L12 2z" stroke="#3DDCFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 2v20M2 8l10 6 10-6" stroke="#3DDCFF" stroke-width="1.2" opacity="0.5"/></svg>
-      Kaion
-    </div>
+    <a class="logo" href="#top" aria-label="Kaion">
+      <svg class="logo-wm" viewBox="-14 -16 1234 332" aria-hidden="true"><use href="#kaion-wm"/></svg>
+    </a>
     <div class="navlinks">
       <a href="#toolbox">Tools</a>
       <a href="#services">Services</a>
@@ -245,28 +241,7 @@
       </div>
     </div>
     <div class="hero-art">
-      <!-- pixel-style dragon head, simple geometric -->
-      <svg viewBox="0 0 64 64" shape-rendering="crispEdges">
-        <g fill="#FF3D7F">
-          <rect x="20" y="8" width="4" height="4"/><rect x="24" y="8" width="4" height="4"/>
-          <rect x="16" y="12" width="4" height="4"/><rect x="28" y="12" width="4" height="4"/>
-          <rect x="16" y="16" width="24" height="4"/>
-          <rect x="12" y="20" width="4" height="4"/><rect x="40" y="20" width="4" height="4"/>
-        </g>
-        <g fill="#3DDCFF">
-          <rect x="12" y="24" width="32" height="16"/>
-          <rect x="8" y="28" width="4" height="8"/>
-          <rect x="44" y="28" width="4" height="8"/>
-        </g>
-        <g fill="#0B0D14">
-          <rect x="18" y="28" width="4" height="4"/>
-          <rect x="34" y="28" width="4" height="4"/>
-        </g>
-        <g fill="#3DDCFF">
-          <rect x="16" y="40" width="6" height="6"/><rect x="34" y="40" width="6" height="6"/>
-          <rect x="12" y="46" width="6" height="6"/><rect x="38" y="46" width="6" height="6"/>
-        </g>
-      </svg>
+      <svg viewBox="0 0 400 400" role="img" aria-label="Kaion symbol: a moon split by a cut"><path d="M300.1 145.6 A125.0 125.0 0 0 1 88.1 278.0 Z" fill="#EFE6D6"/><path d="M99.9 254.4 A125.0 125.0 0 0 1 311.9 122.0 Z" fill="#EFE6D6"/><line x1="89.8" y1="268.9" x2="310.2" y2="131.1" stroke="#D7263D" stroke-width="8.8"/></svg>
     </div>
   </div>
 </section>
@@ -404,9 +379,9 @@
     <span>Kaion — video editing</span>
     <span>© 2026</span>
   </div>
-  <div class="footer-giant-wrap">
-    <div class="footer-giant">KAION</div>
-    <div class="footer-giant footer-giant-blur" aria-hidden="true">KAION</div>
+  <div class="footer-giant-wrap" role="img" aria-label="Kaion">
+    <svg class="fg" viewBox="-14 -16 1234 332" aria-hidden="true"><use href="#kaion-wm"/></svg>
+    <svg class="fg fg-blur" viewBox="-14 -16 1234 332" aria-hidden="true"><use href="#kaion-wm"/></svg>
   </div>
 </footer>
 
@@ -479,57 +454,6 @@
     document.querySelectorAll('.reveal-card').forEach(el => io.observe(el));
   } else {
     document.querySelectorAll('.reveal-card').forEach(el => el.classList.add('in-view'));
-  }
-  // ====================================================================
-  // KAION gigante no rodapé: o corte termina exatamente na base da barra
-  // do "A", e essa mesma linha serve de régua pras outras letras.
-  // Mede o "A" na fonte real, então funciona em qualquer tamanho de tela.
-  // ====================================================================
-  function alignWordmark(){
-    try{
-      const wrap = document.querySelector('.footer-giant-wrap');
-      const word = wrap && wrap.querySelector('.footer-giant');
-      if(!wrap || !word) return;
-      const fs = parseFloat(getComputedStyle(word).fontSize);
-
-      // 1) desenha o "A" num canvas, com a mesma fonte, e lê a coluna central
-      const S = 400;
-      const c = document.createElement('canvas');
-      c.width = Math.round(S * 1.6); c.height = Math.round(S * 1.4);
-      const ctx = c.getContext('2d', {willReadFrequently:true});
-      ctx.font = "700 " + S + "px 'Chakra Petch', sans-serif";
-      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-      const baseY = Math.round(S * 1.1);
-      ctx.fillText('A', c.width / 2, baseY);
-      const col = ctx.getImageData(Math.round(c.width / 2), 0, 1, c.height).data;
-
-      // de cima pra baixo: topo do A (sólido), buraco do A (vazio), barra (sólido)
-      const runs = []; let inRun = false, start = 0;
-      for(let y = 0; y < c.height; y++){
-        const solid = col[y * 4 + 3] > 128;
-        if(solid && !inRun){ inRun = true; start = y; }
-        if(!solid && inRun){ inRun = false; runs.push([start, y - 1]); }
-      }
-      if(inRun) runs.push([start, c.height - 1]);
-      if(runs.length < 2) return;
-      const barBottom = runs[1][1] + 1;                 // base da barra
-      const barAboveBaseline = (baseY - barBottom) / S;  // em "em"
-
-      // 2) acha a linha de base do texto no HTML (elemento de altura zero fica nela)
-      const probe = document.createElement('span');
-      probe.style.cssText = 'display:inline-block;width:0;height:0;';
-      word.appendChild(probe);
-      const baseline = (probe.getBoundingClientRect().top - word.getBoundingClientRect().top) / fs;
-      word.removeChild(probe);
-
-      const cut = baseline - barAboveBaseline;
-      if(cut > 0.2 && cut < 1.2) wrap.style.setProperty('--cut', cut.toFixed(4));
-    }catch(e){ /* mantém a altura padrão */ }
-  }
-  if(document.fonts && document.fonts.load){
-    document.fonts.load("700 100px 'Chakra Petch'", "A").then(alignWordmark, alignWordmark);
-  } else {
-    window.addEventListener('load', alignWordmark);
   }
 </script>
 
