@@ -420,10 +420,10 @@ html{color-scheme:dark}
 #about .h2 .tone,.footer .h2 .tone{color:var(--soft)}
 .hero .h1 .tone{color:var(--soft)}
 
-/* section eyebrow with a small red cut */
+/* section eyebrow: logo mark: ring with red cut */
 .h2[data-eb]{position:relative;padding-top:40px}
-.h2[data-eb]::before{content:'';position:absolute;left:0;top:13px;width:18px;height:2px;background:var(--red);transform:rotate(-40deg);transform-origin:left center}
-.h2[data-eb]::after{content:attr(data-eb);position:absolute;left:28px;top:0;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.h2[data-eb]::before{content:'';position:absolute;left:0;top:-1px;width:20px;height:20px;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='60%2060%20280%20280'%20fill='none'%20stroke-linecap='butt'%3E%3Cpath%20d='M300.1%20145.6A125%20125%200%200%201%2088.1%20278'%20stroke='%23EFE6D6'%20stroke-width='24'/%3E%3Cpath%20d='M99.9%20254.4A125%20125%200%200%201%20311.9%20122'%20stroke='%23EFE6D6'%20stroke-width='24'/%3E%3Cline%20x1='72'%20y1='276'%20x2='328'%20y2='124'%20stroke='%23D7263D'%20stroke-width='24'/%3E%3C/svg%3E") center/contain no-repeat}
+.h2[data-eb]::after{content:attr(data-eb);position:absolute;left:30px;top:0;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
 /* buttons */
 .btn-black{background:var(--cream);color:#0B0D14;box-shadow:var(--shadow-gloss)}
@@ -465,6 +465,7 @@ html{color-scheme:dark}
 .footer{background:var(--cream);color:#0B0D14}
 .footer .h2 .tone{color:#8A8271}
 .footer .h2[data-eb]::after{color:#6B6658}
+.footer .h2[data-eb]::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='60%2060%20280%20280'%20fill='none'%20stroke-linecap='butt'%3E%3Cpath%20d='M300.1%20145.6A125%20125%200%200%201%2088.1%20278'%20stroke='%230B0D14'%20stroke-width='24'/%3E%3Cpath%20d='M99.9%20254.4A125%20125%200%200%201%20311.9%20122'%20stroke='%230B0D14'%20stroke-width='24'/%3E%3Cline%20x1='72'%20y1='276'%20x2='328'%20y2='124'%20stroke='%23D7263D'%20stroke-width='24'/%3E%3C/svg%3E")}
 .f-row{border-bottom-color:rgba(11,13,20,.16)}
 .f-k{color:#6B6658}
 .copy{background:rgba(11,13,20,.07);color:#0B0D14}
